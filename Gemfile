@@ -2,11 +2,15 @@ source 'https://rubygems.org'
 
 gem 'rails'
 gem 'pg'
+gem 'bootstrap-sass'
+gem 'sprockets'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'bcrypt-ruby'
+gem 'pry'
 
 group :development do
   gem 'better_errors'

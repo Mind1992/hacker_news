@@ -1,0 +1,10 @@
+<ol>
+  <% sorted_links = @links.sort_by { |link| link.votes.count }.reverse %>
+  <% sorted_links.each do |link| %>
+    <li><a href="/links/<%= link.id %>/votes"
+   data-method="create">^</a><a href="<%=link.url%>" target="_blank"><%= link.name%></a><span>(<%= link.url %>)</span></li>
+    <span><%= link.created_at %></span>
+
+  <% end %>
+</ol>
+
