@@ -10,6 +10,11 @@ class VotesController < ApplicationController
   def create
     @link = Link.find(params[:link_id])
     @vote = @link.votes.create
+    if @link.created_at == Date.yesterday
+      @point = @link.points.create(:point_amount => 3)
+    else
+      @point = @link.points.create(:point_amount => 8)
+    end
     if @vote.save
       redirect_to root_url
     else

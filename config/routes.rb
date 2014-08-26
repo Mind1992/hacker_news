@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :links do
     resources :votes
+    resources :points
+    resources :comments
   end
 end

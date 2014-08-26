@@ -1,10 +1,9 @@
 <ol>
-  <% sorted_links = @links.sort_by { |link| link.votes.count }.reverse %>
-  <%= Link.where(:created_at => Date.yesterday) %>
+  <% sorted_links = @links.sort_by { |link| link.points.sum(:point_amount) }.reverse %>
   <% sorted_links.each do |link| %>
     <li><a href="/links/<%= link.id %>/votes"
-   data-method="create">^</a><a href="<%=link.url%>" target="_blank"><%= link.name%></a><span>(<%= link.url %>)</span></li>
-    <span><%= link.created_at %></span>
+   data-method="create">^</a><a href="<%=link.url%>" target="_blank"><%= link.name %></a><span>(<%= link.url %>)</span></li>
+    <span><%= link.points.sum(:point_amount) %> points </span><span><%= link.created_at %></span>
   <% end %>
 </ol>
 
