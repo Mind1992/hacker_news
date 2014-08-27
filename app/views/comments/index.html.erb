@@ -1,5 +1,6 @@
-<%= render 'form' %>
 
-<% @comments.each do |comment| %>
-  <%= comment.content %>
-<% end %>
+<ul>
+  <% @link.comments.each do |comment| %>
+    <li><%= comment.content %></li>
+  <% end %>
+</ul>

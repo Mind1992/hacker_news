@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  has_many :comments
+  has_many :comments, :as => :commentable
   has_many :points
   has_many :votes
   has_many :users, :through => :votes
