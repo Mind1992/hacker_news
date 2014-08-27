@@ -4,6 +4,7 @@
     <li><a href="/links/<%= link.id %>/votes"
    data-method="create">^</a><a href="<%=link.url%>" target="_blank"><%= link.name %></a><span>(<%= link.url %>)</span></li>
     <span><%= link.points.sum(:point_amount) %> points </span><span><%= link.created_at %></span>
+    <a href="/links/<%= link.id %>/comments"><span> <%= link.comments.count %> comments</span></a>
   <% end %>
 </ol>
 

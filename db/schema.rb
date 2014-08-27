@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140827050028) do
   create_table "links", force: true do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "datetime"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

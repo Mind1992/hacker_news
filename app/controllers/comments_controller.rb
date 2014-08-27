@@ -1,26 +1,45 @@
 class CommentsController < ApplicationController
+
   def index
-    @link = Link.find(params[:link_id])
-    @comments = Comment.all
+    @commentable = find_commentable
+     @comments = @commentable.comments
   end
 
   def new
-   @link = Link.find(params[:link_id])
-   @comment = @link.comments.new
+    @commentable = find_commentable
   end
 
   def create
-    @link = Link.find(params[:link_id])
-    @comment = @link.comments.create(comment_params)
+    @commentable = find_commentable
+    @comment = @commentable.comments.build(comment_params)
     if @comment.save
-      redirect_to root_url
+      redirect_to get_master
     else
-      render "new"
+      render 'new'
     end
   end
 
-  private
+private
   def comment_params
-    params.require(:comment).permit(:content, :link_id)
+    params.require(:comment).permit(:content)
+  end
+
+  def find_commentable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
+  end
+
+  def get_master
+    @parent = @comment.commentable
+    if @parent.respond_to?('commentable_type')
+      @comment = @parent
+      get_master
+    else
+      return @parent
+    end
   end
 end
