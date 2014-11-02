@@ -1,6 +1,6 @@
 # Hacker News Clone
 
-Hacker News Clone is a project built in Ruby on Rails framework. The main goals of this project was to practise building Rails apps and reflect some of the Hacker News website's functionalities.
+Hacker News Clone is a project built in Ruby on Rails framework. The project reflects some of the Hacker News' functionalities.
 
 ## Setup
 Clone this repository in your terminal:
